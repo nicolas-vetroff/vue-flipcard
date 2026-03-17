@@ -45,5 +45,5 @@ function onMouseLeave() {
 </script>
 
 <style scoped>
-@import '../assets/flip-card.css';
+@import '../assets/flipcard.css';
 </style>

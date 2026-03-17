@@ -1,5 +1,5 @@
 <template>
-    <div class="app">
+    <div>
         <h1>Vue Flip Card Example</h1>
         <FlipCard activeHover activeClick>
             <template #front>
