@@ -721,6 +721,11 @@ tslib@^2.1.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.1.tgz#612efe4ed235d567e8aba5f2a5fab70280ade83f"
   integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
 
+ua-parser-js@^1.0.2:
+  version "1.0.41"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-1.0.41.tgz#bd04dc9ec830fcf9e4fad35cf22dcedd2e3b4e9c"
+  integrity sha512-LbBDqdIC5s8iROCUjMbW1f5dJQTEFB1+KO9ogbvlb3nm9n4YHa5p4KTvFPWvh2Hs8gZMBuiB1/8+pdfe/tDPug==
+
 util@^0.10.3:
   version "0.10.4"
   resolved "https://registry.npmjs.org/util/-/util-0.10.4.tgz"
@@ -738,6 +743,14 @@ vite@^5.0.0:
     rollup "^4.20.0"
   optionalDependencies:
     fsevents "~2.3.3"
+
+vue-device-detect@^1.0.0, vue-device-detect@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/vue-device-detect/-/vue-device-detect-1.0.3.tgz#5cc10c4743b0765295e1fd830de8dd4079d0e12c"
+  integrity sha512-3DzdW88bHReUS9hUaqXvUXFmpa9QsZ0Dmo8EjvteBU1OoaDP9jwEj+LvCXjYSzGBC1fEylTHoOXwvqj4jwBHOQ==
+  dependencies:
+    ua-parser-js "^1.0.2"
+    vue-device-detect "^1.0.0"
 
 vue@^3.2.0:
   version "3.5.30"
