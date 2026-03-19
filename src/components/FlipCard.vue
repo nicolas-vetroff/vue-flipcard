@@ -52,10 +52,9 @@ function onTouchMove(e: TouchEvent) {
     const currentY = e.touches[0].screenY
     const deltaY = currentY - startTouchY.value
 
-    const directionMultiplier = -1
     const sensitivity = 180 / 200 // 200px for full flip
 
-    let moveIncrement = deltaY * sensitivity * directionMultiplier
+    let moveIncrement = deltaY * sensitivity * -1
     let newRotation = baseRotation.value + moveIncrement
 
     if (side.value === 'front') {
@@ -99,6 +98,9 @@ function onTouchEnd() {
       return
     }
     rotation.value = props.flipSide === 'right' ? 180 : -180
+  } else if (rotation.value < 45 && rotation.value > -45) {
+    rotation.value = 0
+    return
   } else {
     side.value = 'front'
     if (props.flipSide === 'up' || props.flipSide === 'down') {
@@ -125,7 +127,7 @@ function onMouseEnter() {
   if (!props.activeHover || !isDesktop) return
   side.value = 'back'
   if (props.flipSide === 'up' || props.flipSide === 'down') {
-    rotation.value = props.flipSide === 'down' ? 180 : -180
+    rotation.value = props.flipSide === 'down' ? -180 : 180
     return
   }
   rotation.value = props.flipSide === 'right' ? 180 : -180

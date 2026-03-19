@@ -5,7 +5,7 @@ import { ref } from 'vue'
 <template>
     <div>
         <h1>Vue Flip Card Example</h1>
-        <FlipCard active-drag active-click flip-side="down">
+        <FlipCard active-drag active-click active-hover flip-side="up">
             <template #front>
                 <p>Front Side</p>
             </template>
