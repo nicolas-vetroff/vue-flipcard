@@ -3,8 +3,8 @@ import { ref, computed, CSSProperties } from 'vue'
 import { isDesktop } from 'vue-device-detect'
 
 const props = defineProps({
-  width: { type: String, default: '200px' },
-  height: { type: String, default: '200px' },
+  width : { type: String, default: '200px' },
+  height: { type: String, default: '150px' },
   activeHover: { type: Boolean, default: false },
   activeClick: { type: Boolean, default: false },
   activeDrag: { type: Boolean, default: false },
@@ -52,8 +52,8 @@ function onTouchMove(e: TouchEvent) {
     const currentY = e.touches[0].screenY
     const deltaY = currentY - startTouchY.value
 
-    const directionMultiplier = props.flipSide === 'down' ? 1 : -1
-    const sensitivity = directionMultiplier * 180 / 200 // 200px for full flip
+    const directionMultiplier = -1
+    const sensitivity = 180 / 200 // 200px for full flip
 
     let moveIncrement = deltaY * sensitivity * directionMultiplier
     let newRotation = baseRotation.value + moveIncrement
@@ -141,7 +141,7 @@ function onMouseLeave() {
 <template>
   <div
     class="flip-card"
-    :style="{ width, height }"
+    :style="{ width: width, height: height }"
     @click="onClick"
     @touchstart="onTouchStart"
     @touchmove.prevent="onTouchMove"
@@ -149,12 +149,9 @@ function onMouseLeave() {
     @mouseenter="onMouseEnter"
     @mouseleave="onMouseLeave"
   >
-    <div
-      class="flip-card-inner"
-      :style="cardStyle"
-    >
+    <div class="flip-card-inner" :style="cardStyle" :class="{ flipped: isFlipped }">
       <div class="flip-card-face front"><slot name="front"></slot></div>
-      <div class="flip-card-face back" :class="{ [flipSide]: isFlipped }"><slot name="back"></slot></div>
+      <div class="flip-card-face back" :class="flipSide"><slot name="back"></slot></div>
     </div>
   </div>
 </template>
