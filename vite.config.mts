@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'VueFlip',
+      name: 'FlipCard',
       fileName: (format) => `vue-flipcard.${format}.js`,
       formats: ['es', 'cjs', 'umd']
     },

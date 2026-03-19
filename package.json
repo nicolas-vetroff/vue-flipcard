@@ -1,17 +1,20 @@
 {
   "name": "vue-flipcard",
-  "version": "0.1.0",
-  "description": "A small Vue 3 flip-card component",
+  "version": "1.0.0",
+  "description": "A small Vue 3 flip-card component with support for hover, click and drag interactions.",
   "main": "dist/vue-flipcard.cjs.js",
   "module": "dist/vue-flipcard.es.js",
   "types": "dist/main.d.ts",
   "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/nicolas-vetroff/vue-flipcard" },
+  "keywords": ["vue", "flipcard", "component"],
+  "author": "Nicolas VETROFF",
+  "homepage": "https://github.com/nicolas-vetroff/vue-flipcard",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "vite build",
-    "dev": "vite example"
+    "build": "vite build"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.5",
