@@ -191,4 +191,4 @@ https://github.com/nicolas-vetroff/vue-flipcard
 
 ## Contributing
 
-This project is open to improvements and suggestions. Feel free to open issues. Some potential enhancements include infinite card rotation, additional animation options, and more customization features.
+This project is open to improvements and suggestions. Feel free to open issues.

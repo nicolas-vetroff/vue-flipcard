@@ -1,0 +1,4 @@
+- [X] Basic flip card component working with front and back slots supporting click, drag/swipe, and hover interactions
+- [ ] Implement allow-infinite option for flipping in the same direction multiple times
+- [ ] Add support for custom flip animation (style, duration, easing)
+- ...
