@@ -1,6 +1,6 @@
 # Vue FlipCard
 
-An elegant and interactive Vue 3 flip-card component with support for touch interactions, clicks, and hover effects across 4 rotation directions.
+An elegant and interactive Vue 3 flip-card component with support for drag interactions, clicks, and hover effects across 4 rotation directions.
 
 ⚠️ **Client-only component**: This component relies on DOM interactions and CSS 3D transforms. It cannot be rendered on the server and must be used only in client-side contexts.
 
@@ -79,7 +79,7 @@ Since this is a **client-only component**, wrap it with `<ClientOnly>`:
     height="150px"
     flip-side="right"
     active-click
-    active-touch
+    active-drag
   >
     <template #front>
       <p>Front side</p>
@@ -151,7 +151,7 @@ This prevents hydration mismatches and ensures your component renders correctly.
 
 ### Flip on swipe (mobile)
 ```html
-<VFlipCard flip-side="left" active-touch width="300px" height="200px">
+<VFlipCard flip-side="left" active-drag width="300px" height="200px">
   <template #front>Swipe left</template>
   <template #back>Content</template>
 </VFlipCard>
@@ -162,7 +162,7 @@ This prevents hydration mismatches and ensures your component renders correctly.
 <VFlipCard
   flip-side="down"
   active-click
-  active-touch
+  active-drag
   active-hover
 >
   <template #front>Front</template>
