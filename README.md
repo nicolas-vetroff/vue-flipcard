@@ -99,7 +99,7 @@ Since this is a **client-only component**, wrap it with `<ClientOnly>`:
 | `height` | String | `'150px'` | Card height |
 | `flipSide` | `'left' \| 'right' \| 'up' \| 'down'` | `'right'` | Flip direction |
 | `activeClick` | Boolean | `false` | Enable flip on click |
-| `activeTouch` | Boolean | `false` | Enable flip on drag/swipe (mobile only) |
+| `activeDrag` | Boolean | `false` | Enable flip on drag/swipe (mobile only) |
 | `activeHover` | Boolean | `false` | Enable flip on hover (desktop only) |
 
 ## Slots
