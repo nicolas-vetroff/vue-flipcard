@@ -1,6 +1,8 @@
 # Vue FlipCard
 
-An elegant and interactive Vue 3 flip-card component with support for touch interactions, clicks, and hover effects across 4 rotation directions.
+An elegant and interactive Vue 3 flip-card component with support for drag interactions, clicks, and hover effects across 4 rotation directions.
+
+⚠️ **Client-only component**: This component relies on DOM interactions and CSS 3D transforms. It cannot be rendered on the server and must be used only in client-side contexts.
 
 ## Features
 
@@ -14,11 +16,11 @@ An elegant and interactive Vue 3 flip-card component with support for touch inte
 ## Installation
 
 ```bash
-npm install vue-flipcard
+npm install @nv-dev/vue-flipcard
 # or
-yarn add vue-flipcard
+yarn add @nv-dev/vue-flipcard
 # or
-pnpm add vue-flipcard
+pnpm add @nv-dev/vue-flipcard
 ```
 
 ## Usage
@@ -28,19 +30,17 @@ pnpm add vue-flipcard
 #### Import the component
 
 ```typescript
-import VFlipCard from 'vue-flipcard'
-import 'vue-flipcard/dist/style.css'
+import VFlipCard from '@nv-dev/vue-flipcard'
 ```
 
 Or register globally:
 
 ```typescript
 import { createApp } from 'vue'
-import VFlipCard from 'vue-flipcard'
-import 'vue-flipcard/dist/style.css'
+import VFlipCard from '@nv-dev/vue-flipcard'
 
 const app = createApp(App)
-app.component('VFlipCard', VFlipCard.VFlipCard)
+app.use(VFlipCard)
 app.mount('#app')
 ```
 
@@ -50,18 +50,23 @@ Add the module to your `nuxt.config.ts`:
 
 ```typescript
 export default defineNuxtConfig({
-  modules: ['@nv-dev/vue-flipcard'],
+  modules: [
+    '@nv-dev/vue-flipcard'
+  ],
 })
 ```
 
 The `VFlipCard` component will be automatically imported throughout your Nuxt app. No manual imports needed!
 
+Since this is a **client-only component**, wrap it with `<ClientOnly>`:
+
 ```html
 <template>
-  <VFlipCard flip-side="right" active-click>
-    <template #front>Front</template>
-    <template #back>Back</template>
-  </VFlipCard>
+  <ClientOnly>
+    <VFlipCard flip-side="right" active-click>
+      <!-- CODE -->
+    </VFlipCard>
+  </ClientOnly>
 </template>
 ```
 
@@ -94,7 +99,7 @@ The `VFlipCard` component will be automatically imported throughout your Nuxt ap
 | `height` | String | `'150px'` | Card height |
 | `flipSide` | `'left' \| 'right' \| 'up' \| 'down'` | `'right'` | Flip direction |
 | `activeClick` | Boolean | `false` | Enable flip on click |
-| `activeDrag` | Boolean | `false` | Enable flip on drag/swipe |
+| `activeDrag` | Boolean | `false` | Enable flip on drag/swipe (mobile only) |
 | `activeHover` | Boolean | `false` | Enable flip on hover (desktop only) |
 
 ## Slots
@@ -104,6 +109,27 @@ Content displayed on the front face of the card.
 
 ### `#back`
 Content displayed on the back face of the card.
+
+## Client-only Component
+
+This component is **client-only** for now and cannot be server-side rendered (SSR).
+
+### Using with Nuxt 3
+
+Always wrap the component with `<ClientOnly>`:
+
+```html
+<template>
+  <ClientOnly>
+    <VFlipCard flip-side="right" active-click>
+      <template #front>Front content</template>
+      <template #back>Back content</template>
+    </VFlipCard>
+  </ClientOnly>
+</template>
+```
+
+This prevents hydration mismatches and ensures your component renders correctly.
 
 ## Examples
 
@@ -123,7 +149,7 @@ Content displayed on the back face of the card.
 </VFlipCard>
 ```
 
-### Flip on drag
+### Flip on swipe (mobile)
 ```html
 <VFlipCard flip-side="left" active-drag width="300px" height="200px">
   <template #front>Swipe left</template>
@@ -197,7 +223,7 @@ Customize with scoped CSS:
 
 ## Events
 
-Currently, the component does not emit events. State changes are managed internally. To track changes, use slots with Vue refs.
+Currently, the component does not emit events. State changes are managed internally. To track changes, use slots with Vue refs. It will change in a next update.
 
 ## Browser Support
 
