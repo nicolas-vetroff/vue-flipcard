@@ -20,6 +20,9 @@ const side = ref<'front' | 'back'>('front')
 const isFlipped = computed(() => side.value === 'back')
 
 const rotation = ref(0)
+const getRotation = computed(() => rotation.value)
+defineExpose({ getRotation })
+
 const startTouchX = ref(0)
 const startTouchY = ref(0)
 const isDragging = ref(false)

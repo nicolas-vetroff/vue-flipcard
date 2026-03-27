@@ -183,3 +183,75 @@ describe('VFlipCard - Props', () => {
     expect(wrapper.props('height')).toBe('250px')
   })
 })
+
+///////////////
+// ROTATIONS //
+///////////////
+
+describe('VFlipCard - Rotations', () => {
+  it('should rotate to 180 degrees on click when flipSide is right', async () => {
+    const wrapper = mount(VFlipCard, {
+      props: {
+        activeClick: true,
+        flipSide: 'right'
+      },
+      slots: {
+        front: 'Front',
+        back: 'Back'
+      }
+    })
+
+    await wrapper.find('.flip-card').trigger('click')
+    expect(wrapper.vm.getRotation).toBe(180)
+  })
+
+  it('should rotate to -180 degrees on click when flipSide is left', async () => {
+    const wrapper = mount(VFlipCard, {
+      props: {
+        activeClick: true,
+        flipSide: 'left'
+      },
+      slots: {
+        front: 'Front',
+        back: 'Back'
+      }
+    })
+
+    await wrapper.find('.flip-card').trigger('click')
+    expect(wrapper.vm.getRotation).toBe(-180)
+  })
+
+  it('should rotate to 180 degrees on click when flipSide is up', async () => {
+    const wrapper = mount(VFlipCard, {
+      props: {
+        activeClick: true,
+        flipSide: 'up'
+      },
+      slots: {
+        front: 'Front',
+        back: 'Back'
+      }
+    })
+
+    await wrapper.find('.flip-card').trigger('click')
+    expect(wrapper.vm.getRotation).toBe(180)
+  })
+
+  it('should rotate to -180 degrees on click when flipSide is down', async () => {
+    const wrapper = mount(VFlipCard, {
+      props: {
+        activeClick: true,
+        flipSide: 'down'
+      },
+      slots: {
+        front: 'Front',
+        back: 'Back'
+      }
+    })
+
+    await wrapper.find('.flip-card').trigger('click')
+    expect(wrapper.vm.getRotation).toBe(-180)
+  })
+
+  // TODO: infinite drag rotation tests
+})
