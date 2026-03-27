@@ -92,6 +92,58 @@ describe('VFlipCard - Emits', () => {
     await wrapper.find('.flip-card').trigger('click')
     expect(wrapper.emitted('flip:front')).toBeFalsy()
   })
+
+  it('should not emit on drag when rotation is less than 90 degrees', async () => {
+    const wrapper = mount(VFlipCard, {
+      props: {
+        activeDrag: true,
+        flipSide: 'right'
+      },
+      slots: {
+        front: 'Front',
+        back: 'Back'
+      }
+    })
+
+    const el = wrapper.find('.flip-card').element
+    el.dispatchEvent(new TouchEvent('touchstart', {
+      bubbles: true,
+      touches: [{ screenX: 0, screenY: 0 }] as any
+    }))
+    el.dispatchEvent(new TouchEvent('touchmove', {
+      bubbles: true,
+      touches: [{ screenX: 100, screenY: 0 }] as any // full rotation: 200px
+    }))
+    el.dispatchEvent(new TouchEvent('touchend', { bubbles: true }))
+
+    expect(wrapper.emitted('flip:back')).toBeFalsy()
+  })
+
+  it('should emit flip:back on drag when rotation is greater than 90 degrees', async () => {
+    const wrapper = mount(VFlipCard, {
+      props: {
+        activeDrag: true,
+        flipSide: 'right'
+      },
+      slots: {
+        front: 'Front',
+        back: 'Back'
+      }
+    })
+
+    const el = wrapper.find('.flip-card').element
+    el.dispatchEvent(new TouchEvent('touchstart', {
+      bubbles: true,
+      touches: [{ screenX: 0, screenY: 0 }] as any
+    }))
+    el.dispatchEvent(new TouchEvent('touchmove', {
+      bubbles: true,
+      touches: [{ screenX: 101, screenY: 0 }] as any // just past 90 degrees (full rotation: 200px)
+    }))
+    el.dispatchEvent(new TouchEvent('touchend', { bubbles: true }))
+
+    expect(wrapper.emitted('flip:back')).toBeTruthy()
+  })
 })
 
 ///////////
